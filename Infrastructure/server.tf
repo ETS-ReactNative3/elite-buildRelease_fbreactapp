@@ -10,6 +10,6 @@ resource "aws_instance" "server" {
     ignore_changes = [ami, user_data_base64]
   }
   tags = merge(local.common_tags,
-    { Name = "fb-reatapp"
+    { Name = "fb-reactapp"
   Application = "public" })
 }
