@@ -18,7 +18,7 @@ data "aws_ami" "ubuntu" {
 data "cloudinit_config" "userdata" {
   gzip          = true
   base64_encode = true
-  
+
   part {
     content_type = "text/x-shellscript"
     filename     = "userdata_docker"
