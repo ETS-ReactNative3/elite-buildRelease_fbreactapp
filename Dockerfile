@@ -1,3 +1,5 @@
+#/* docker build fcreactapp *\#
+LABEL "elitelabtools.com"="EliteSolutionsIT"
 FROM node:alpine
 
 # set working directory
