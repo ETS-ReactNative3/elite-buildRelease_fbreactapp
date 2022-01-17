@@ -221,5 +221,5 @@ Create React App is open source software [licensed as MIT](https://github.com/fa
 
 
 ## Dockerize app
-sudo docker build -t reactapp:dev .
-sudo docker run -itd -p 3000:3000 --rm reactapp:dev
+- **Build server** sudo docker build -t reactapp:dev .
+- **run container to start server** sudo docker run -itd -p 3000:3000 --rm reactapp:dev
