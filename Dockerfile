@@ -9,8 +9,8 @@ COPY package.json ./
 
 COPY ./ ./
 
-RUN npm@8 install
-RUN npm i -g npm@8
+RUN npm install
+RUN npm i -g npm
 RUN npm ci --prefer-offline
 
 # start app
