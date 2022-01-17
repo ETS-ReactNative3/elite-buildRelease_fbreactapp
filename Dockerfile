@@ -12,7 +12,7 @@ COPY . /app
 RUN npm install --silent
 # RUN npm i -g npm
 # RUN npm ci --prefer-offline
+EXPOSE 3000
 
-RUN cd /app
 # start app
 CMD ["npm", "run", "start"]
