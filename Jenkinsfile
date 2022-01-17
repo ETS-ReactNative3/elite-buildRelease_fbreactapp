@@ -14,7 +14,7 @@ pipeline {
                 }
             }
 
-            stage('Building image') {
+            stage('Building Docker Image') {
                 steps {
                     script {
                         dockerImage = docker.build registry + ":$BUILD_NUMBER"
@@ -22,7 +22,7 @@ pipeline {
                 }
             }
 
-            stage('Push to Dockerhub') {
+            stage('Deploying Docker Image to Dockerhub') {
                 steps {
                     script {
                         docker.withRegistry('', registryCredential) {
@@ -32,15 +32,9 @@ pipeline {
                 }
             }
 
-            // stage('Cleaning Up') {
-            //     steps{
-            //       sh "docker rmi --force $registry:$BUILD_NUMBER"
-            //     }
-            // }
-            stage('Build app') {
+            stage('Cleaning Up') {
                 steps{
-                //   sh "docker rmi --force $registry:$BUILD_NUMBER"
-                  sh "docker run -itd -p 3000:3000 --rm $registry:$BUILD_NUMBER"
+                  sh "docker rmi --force $registry:$BUILD_NUMBER"
                 }
             }
         }
