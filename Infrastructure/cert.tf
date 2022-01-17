@@ -1,5 +1,5 @@
 //* Certificate *//
-#####------ Certificate -----------####
+
 resource "aws_acm_certificate" "fbreactappcert" {
   domain_name       = "*.elitelabtools.com"
   validation_method = "DNS"
@@ -9,12 +9,6 @@ resource "aws_acm_certificate" "fbreactappcert" {
   tags = merge(local.common_tags,
     { Name = "fbreactappdev.elitelabtools.com"
   Cert = "fbreactappcert" })
-}
-
-###------- Cert Validation -------###
-data "aws_route53_zone" "main-zone" {
-  name         = "elitelabtools.com"
-  private_zone = false
 }
 
 resource "aws_route53_record" "fbreactappzone_record" {

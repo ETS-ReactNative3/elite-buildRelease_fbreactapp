@@ -25,3 +25,8 @@ data "cloudinit_config" "userdata" {
     content      = templatefile("../templates/userdata_docker.tpl", {})
   }
 }
+
+data "aws_route53_zone" "main-zone" {
+  name         = "elitelabtools.com"
+  private_zone = false
+}
