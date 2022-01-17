@@ -1,4 +1,22 @@
 //* ALB *//
+
+resource "aws_lb" "fbreactapplb" {
+  name               = join("-", [local.application.app_name, "fbreactapplb"])
+  internal           = false
+  load_balancer_type = "application"
+  security_groups    = [aws_security_group.ec2-sg.id, aws_security_group.main-alb.id]
+  subnets            = [aws_subnet.main-public-1.id, aws_subnet.main-public-2.id]
+  idle_timeout       = "60"
+
+  access_logs {
+    bucket  = aws_s3_bucket.fbreactapps3dev.bucket
+    prefix  = join("-", [local.application.app_name, "fbreactapplb-s3logs"])
+    enabled = true
+  }
+  tags = merge(local.common_tags,
+    { Name = "fbreactappserver"
+  Application = "public" })
+}
 resource "aws_lb_target_group" "fbreactapp_tglb" {
   name     = join("-", [local.application.app_name, "fbreactapptglb"])
   port     = 3000
@@ -18,7 +36,7 @@ resource "aws_lb_target_group" "fbreactapp_tglb" {
 }
 resource "aws_lb_target_group_attachment" "fbreactapp_tglbat" {
   target_group_arn = aws_lb_target_group.fbreactapp_tglb.arn
-  target_id        = aws_instance.fbreactappserver.id
+  target_id        = aws_instance.server.id
   port             = 3000
 }
 
