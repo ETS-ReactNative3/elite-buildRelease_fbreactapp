@@ -34,24 +34,24 @@ resource "aws_lb_target_group" "fbreactapp_tglb" {
     matcher             = "200"
   }
 }
-# resource "aws_lb_target_group_attachment" "fbreactapp_tglbat" {
-#   target_group_arn = aws_lb_target_group.fbreactapp_tglb.arn
-#   target_id        = aws_instance.server.id
-#   port             = 3000
-# }
+resource "aws_lb_target_group_attachment" "fbreactapp_tglbat" {
+  target_group_arn = aws_lb_target_group.fbreactapp_tglb.arn
+  target_id        = aws_instance.server.id
+  port             = 3000
+}
 
-# # # ####-------- SSL Cert ------#####
-# resource "aws_lb_listener" "fbreactapp_lblist2" {
-#   load_balancer_arn = aws_lb.fbreactapplb.arn
-#   port              = "443"
-#   protocol          = "HTTPS"
-#   ssl_policy        = "ELBSecurityPolicy-TLS-1-2-2017-01"
-#   certificate_arn   = "arn:aws:acm:us-east-1:375866976303:certificate/9f3244bb-eb7c-4eba-b182-1d9acf5bccf1"
-#   default_action {
-#     type             = "forward"
-#     target_group_arn = aws_lb_target_group.fbreactapp_tglb.arn
-#   }
-# }
+# # ####-------- SSL Cert ------#####
+resource "aws_lb_listener" "fbreactapp_lblist2" {
+  load_balancer_arn = aws_lb.fbreactapplb.arn
+  port              = "443"
+  protocol          = "HTTPS"
+  ssl_policy        = "ELBSecurityPolicy-TLS-1-2-2017-01"
+  certificate_arn   = "arn:aws:acm:us-east-1:375866976303:certificate/2bdb6ebe-4149-4e39-9bba-fa129bff471a1"
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.fbreactapp_tglb.arn
+  }
+}
 
 
 ####---- Redirect Rule -----####
