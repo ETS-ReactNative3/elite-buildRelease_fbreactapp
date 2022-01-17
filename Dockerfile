@@ -6,14 +6,11 @@ FROM node:alpine
 WORKDIR /app
 
 # install app dependencies
-COPY package-lock.json .
-COPY package.json .
-
-COPY . /app
+COPY docusaurus/website /app
+RUN cd  /app
 
 RUN npm install --silent
-# RUN npm i -g npm
-# RUN npm ci --prefer-offline
+
 EXPOSE 3000
 
 # start app
