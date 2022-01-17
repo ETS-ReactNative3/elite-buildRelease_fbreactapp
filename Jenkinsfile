@@ -10,7 +10,7 @@ pipeline {
     stages {
             stage('Cloning our Git') {
                 steps {
-                git 'https://github.com/ArerepadeBenagha/elite-buildRelease_fbreactapp.git'
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github_id', url: 'https://github.com/ArerepadeBenagha/elite-buildRelease_fbreactapp.git']]])
                 }
             }
 
