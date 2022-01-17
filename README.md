@@ -218,3 +218,8 @@ We are grateful to the authors of existing related projects for their ideas and 
 ## License
 
 Create React App is open source software [licensed as MIT](https://github.com/facebook/create-react-app/blob/main/LICENSE). The Create React App logo is licensed under a [Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/).
+
+
+## Dockerize app
+sudo docker build -t reactapp:dev .
+sudo docker run -itd -p 3000:3000 --rm reactapp:dev
