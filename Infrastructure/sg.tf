@@ -12,8 +12,8 @@ resource "aws_security_group" "ec2-sg" {
   }
   ///test
   ingress {
-    from_port       = 3000
-    to_port         = 3000
+    from_port       = 8080
+    to_port         = 8080
     protocol        = "tcp"
     security_groups = [aws_security_group.main-alb.id]
   }
@@ -35,8 +35,8 @@ resource "aws_security_group" "main-alb" {
   description = "security group for ALB"
 
   ingress {
-    from_port   = 3000
-    to_port     = 3000
+    from_port   = 8080
+    to_port     = 8080
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }

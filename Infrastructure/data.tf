@@ -26,6 +26,17 @@ data "cloudinit_config" "userdata" {
   }
 }
 
+data "cloudinit_config" "userdata_jenkins" {
+  gzip          = true
+  base64_encode = true
+
+    part {
+    content_type = "text/x-shellscript"
+    filename     = "userdata_jenkins"
+    content      = templatefile("../templates/userdata_jenkins.tpl", {})
+  }
+}
+
 data "aws_route53_zone" "main-zone" {
   name         = "elitelabtools.com"
   private_zone = false

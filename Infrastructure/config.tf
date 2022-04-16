@@ -11,13 +11,13 @@ terraform {
   }
   required_version = ">= 0.14"
 
-  backend "remote" {
-    organization = "EliteSolutionsIT"
+  # backend "remote" {
+  #   organization = "EliteSolutionsIT"
 
-    workspaces {
-      name = "elite-buildRelease_fbreactapp"
-    }
-  }
+  #   workspaces {
+  #     name = "elite-buildRelease_fbreactapp"
+  #   }
+  # }
 }
 
 terraform {

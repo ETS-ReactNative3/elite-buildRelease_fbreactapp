@@ -10,5 +10,6 @@ sudo apt install docker-ce -y
 sudo apt update -y
 
 # Docker permissions
-sudo groupadd docker && sudo gpasswd -a $USER docker
+sudo groupadd docker
+sudo gpasswd -a $USER docker && newgrp docker
 sudo chmod 666 /var/run/docker.sock
